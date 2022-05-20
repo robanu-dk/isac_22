@@ -22,5 +22,5 @@ Route::get('/', function(){
 Route::get('/register','AuthController@regist')->name('regist');
 Route::post('/register','AuthController@create')->name('auth.regist');
 
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/login', 'AuthController@index')->name('login')->middleware('guest');
+Route::post('/login', 'AuthController@login')->name('auth.login');
