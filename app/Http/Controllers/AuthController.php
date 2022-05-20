@@ -33,9 +33,13 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             // Authentication passed...
+            $request->session()->regenerate();
+
+            dd('Berhasil Login ||| Silakan Hapus Syntax ini di AuthController');
+
             return redirect()->route('admin.home');
         }else{
-            Session::flash('error-password','Password Salah');
+            Session::flash('error-password','Login Failed');
             return redirect()->back()->withInput();
         }
 
